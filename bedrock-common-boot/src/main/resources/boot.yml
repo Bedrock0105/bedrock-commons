@@ -1,0 +1,22 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 2048MB
+      max-request-size: 2048MB
+server:
+  # 与 undertow 上限对齐，避免「容器过了、Spring multipart 又拦」
+  undertow:
+    # HTTP POST/PUT 整包上限（Undertow MAX_ENTITY_SIZE）——上传必须够大
+    max-http-post-size: 2048MB
+    # 缓冲：16KB + 直接内存，大文件吞吐更好
+    buffer-size: 16KB
+    direct-buffers: true
+    threads:
+      # IO 线程 ≈ CPU 核数（8 核就写 8，不要盲目加大）
+      io: 8
+      # 业务工作线程：上传/阻塞 IO 可略高，一般 200~400
+      worker: 256
+    # 最大连接数，按机器内存与并发估
+    max-connections: 10000
+    # 大文件上传期间连接空闲超时，过短会中途断开（单位随 Boot 版本：时长写法）
+    no-request-timeout: 10m

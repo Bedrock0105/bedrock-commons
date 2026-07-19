@@ -1,0 +1,2 @@
+org.bedrock.common.spi.configuration.AutoConfigurationProcessor
+org.bedrock.common.spi.autoservice.AutoServiceProcessor

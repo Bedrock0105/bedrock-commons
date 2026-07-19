@@ -1,0 +1,34 @@
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: order
+    operations-sorter: order
+  api-docs:
+    path: /v3/api-docs
+  default-flat-param-object: true
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  #是否开启knife4j 增强
+  enable: true
+  # 是否是生产环境
+  production: false
+  setting:
+    language: zh_cn
+
+bedrock:
+  swagger:
+    enabled: true
+    packages-to-scan: org.bedrock
+    info:
+      title: "接口文档"
+      description: "接口文档"
+      termsOfService: "http://xxxx"
+      version: @revision@
+      contact:
+        name: "xxxx"
+        url: "http://xxxx"
+        email: "xxxx"
+      license:
+        name: "xxxx"
+        url: "http://xxxx"

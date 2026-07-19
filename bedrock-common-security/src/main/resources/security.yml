@@ -1,0 +1,7 @@
+bedrock:
+  security:
+    enabled: false
+    ignore-urls:
+      - /doc.html
+      - /webjars/**
+      - /v3/api-docs/**

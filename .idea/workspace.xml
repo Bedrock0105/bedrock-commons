@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="03341b6a-aa94-4925-8de5-dccee8e190ed" name="Changes" comment="feat(ai): 新增AI模块并扩展通用工具类功能&#10;&#10;- 添加bedrock-common-ai模块，集成多种AI大模型依赖（OpenAI、Anthropic、Google GenAI、Azure等）&#10;- 扩展MediaTypeUtil工具类，增加文件MIME类型解析和判断功能&#10;- 增强StringUtil工具类，添加字符串转换和格式化方法&#10;- 添加ResourceUtil资源加载工具类，支持多种协议资源访问&#10;- 在boot.yml配置undertow大文件上传参数&#10;- 添加spring-boot-admin-starter-client依赖用于服务监控&#10;- 在CacheConstant中新增AI缓存常量" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="539" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://D:/jyz/apache-maven-3.6.3-bin/repository/com/alibaba/druid/1.2.23/druid-1.2.23-sources.jar!/com/alibaba/druid/filter/Filter.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://D:/jyz/apache-maven-3.6.3-bin/repository/com/baomidou/dynamic-datasource-spring-boot-common/4.3.1/dynamic-datasource-spring-boot-common-4.3.1-sources.jar!/com/baomidou/dynamic/datasource/spring/boot/autoconfigure/DynamicDataSourceAssistConfiguration.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://D:/jyz/apache-maven-3.6.3-bin/repository/com/baomidou/dynamic-datasource-spring-boot3-starter/4.3.1/dynamic-datasource-spring-boot3-starter-4.3.1-sources.jar!/com/baomidou/dynamic/datasource/spring/boot/autoconfigure/DynamicDataSourceAopConfiguration.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://D:/jyz/apache-maven-3.6.3-bin/repository/org/springframework/spring-beans/6.1.14/spring-beans-6.1.14-sources.jar!/org/springframework/beans/factory/ListableBeanFactory.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://D:/jyz/apache-maven-3.6.3-bin/repository/org/springframework/spring-core/6.1.14/spring-core-6.1.14-sources.jar!/org/springframework/core/ResolvableType.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="D:\jyz\maven\apache-maven-3.6.3" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="D:\jyz\maven\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="33JpBc9GuZyJhUcOacAdQzuc6sh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.AntPathUtil.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CookieMeta.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.HttpConfiguration.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LocalOssTemplate.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ResponseReturnValueHandler.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bedrock-commons [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bedrock-commons [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bedrock-commons [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bedrock-commons [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.bedrock-commons [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.compile.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.installSource.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/jyz/aaaaa/bedrock/bedrock-commons&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.34367815&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\jyz\aaaaa\bedrock-commons\bedrock-common-code\src\main\java\org\bedrock\common\code\eventbus" />
+      <recent name="F:\jyz\aaaaa\bedrock-commons\bedrock-common-resource\src\main\java\org\bedrock\common\resource" />
+      <recent name="F:\jyz\aaaaa\bedrock-commons\bedrock-common-resource\src\main\java\org\bedrock\common\resource\model\email" />
+      <recent name="F:\jyz\aaaaa\bedrock-commons\bedrock-common-code\src\main\resources\static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\jyz\aaaaa\bedrock-commons\bedrock-common-code\src\main\resources\static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.bedrock.common.ai.model.factory.model" />
+      <recent name="org.bedrock.common.ai.factory.vectorstore.impl" />
+      <recent name="org.bedrock.common.ai.model.factory.vectorstore" />
+      <recent name="org.bedrock.common.resource.support.oss.impl" />
+      <recent name="org.bedrock.common.ai.enums" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Maven.installSource">
+    <configuration name="AntPathUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.bedrock.common.code.util.AntPathUtil" />
+      <module name="bedrock-common-code" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bedrock.common.code.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CookieMeta" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.bedrock.common.http.model.CookieMeta" />
+      <module name="bedrock-common-http" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bedrock.common.http.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.bedrock.common.http.Test" />
+      <module name="bedrock-common-http" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bedrock.common.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.bedrock.common.http.Test" />
+      <module name="bedrock-common-http" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.bedrock.common.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="compile" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="compile" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="installSource" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="source:jar" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="installSource" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="source:jar" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.AntPathUtil" />
+      <item itemvalue="Application.CookieMeta" />
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Maven.compile" />
+      <item itemvalue="Maven.installSource" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AntPathUtil" />
+        <item itemvalue="Application.CookieMeta" />
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="03341b6a-aa94-4925-8de5-dccee8e190ed" name="Changes" comment="" />
+      <created>1759044894790</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759044894790</updated>
+      <workItem from="1759044895914" duration="6097000" />
+      <workItem from="1759073303796" duration="5092000" />
+      <workItem from="1759111177839" duration="19917000" />
+      <workItem from="1759158252517" duration="4737000" />
+      <workItem from="1759196221652" duration="8890000" />
+      <workItem from="1759240453543" duration="7848000" />
+      <workItem from="1759289012019" duration="41207000" />
+      <workItem from="1759589641125" duration="6277000" />
+      <workItem from="1759719396244" duration="1208000" />
+      <workItem from="1759822839347" duration="4154000" />
+      <workItem from="1759852173117" duration="22986000" />
+      <workItem from="1760085003922" duration="1941000" />
+      <workItem from="1760089158696" duration="5162000" />
+      <workItem from="1760146879295" duration="13680000" />
+      <workItem from="1760319745872" duration="10475000" />
+      <workItem from="1760425825782" duration="7029000" />
+      <workItem from="1760495369775" duration="105000" />
+      <workItem from="1760673080278" duration="600000" />
+      <workItem from="1760823199529" duration="9767000" />
+      <workItem from="1760940091387" duration="1566000" />
+      <workItem from="1760965832682" duration="609000" />
+      <workItem from="1761010612645" duration="1798000" />
+      <workItem from="1761051315639" duration="1199000" />
+      <workItem from="1761096937053" duration="1244000" />
+      <workItem from="1761136325360" duration="1719000" />
+      <workItem from="1761183848972" duration="12615000" />
+      <workItem from="1761226327919" duration="1205000" />
+      <workItem from="1761269857962" duration="10554000" />
+      <workItem from="1761401216029" duration="961000" />
+      <workItem from="1761402406900" duration="2610000" />
+      <workItem from="1761529411914" duration="742000" />
+      <workItem from="1761552955218" duration="137000" />
+      <workItem from="1761569034077" duration="1143000" />
+      <workItem from="1761750885360" duration="18000" />
+      <workItem from="1761807792994" duration="12000" />
+      <workItem from="1761807868669" duration="2310000" />
+      <workItem from="1761810731196" duration="155000" />
+      <workItem from="1761813004483" duration="2673000" />
+      <workItem from="1761824046763" duration="1320000" />
+      <workItem from="1761878472957" duration="7752000" />
+      <workItem from="1761966343095" duration="8039000" />
+      <workItem from="1762149444279" duration="8997000" />
+      <workItem from="1762227586904" duration="16840000" />
+      <workItem from="1762310937934" duration="1281000" />
+      <workItem from="1762346996814" duration="2419000" />
+      <workItem from="1762394745266" duration="1516000" />
+      <workItem from="1762398166612" duration="1844000" />
+      <workItem from="1762437343862" duration="11390000" />
+      <workItem from="1762480523058" duration="1287000" />
+      <workItem from="1762482451682" duration="10687000" />
+      <workItem from="1763084963915" duration="3680000" />
+      <workItem from="1763227100525" duration="46000" />
+      <workItem from="1763273755019" duration="718000" />
+      <workItem from="1763353062127" duration="999000" />
+      <workItem from="1763434315862" duration="1705000" />
+      <workItem from="1763437082126" duration="243000" />
+      <workItem from="1763437397825" duration="2688000" />
+      <workItem from="1763449805222" duration="1949000" />
+      <workItem from="1763516590722" duration="327000" />
+      <workItem from="1763516993241" duration="1858000" />
+      <workItem from="1763538688986" duration="4815000" />
+      <workItem from="1763603790462" duration="9585000" />
+      <workItem from="1763691156618" duration="541000" />
+      <workItem from="1763712357021" duration="1285000" />
+      <workItem from="1763965677235" duration="929000" />
+      <workItem from="1764035320088" duration="964000" />
+      <workItem from="1764060642783" duration="2995000" />
+      <workItem from="1764129433451" duration="10323000" />
+      <workItem from="1764227588970" duration="565000" />
+      <workItem from="1764418424828" duration="7170000" />
+      <workItem from="1764566589350" duration="2768000" />
+      <workItem from="1764571024426" duration="8049000" />
+      <workItem from="1764601082899" duration="3328000" />
+      <workItem from="1764639466613" duration="13769000" />
+      <workItem from="1764660954012" duration="7697000" />
+      <workItem from="1764677211594" duration="5993000" />
+      <workItem from="1764726214821" duration="9404000" />
+      <workItem from="1764769760475" duration="2274000" />
+      <workItem from="1764813231567" duration="5897000" />
+      <workItem from="1764847324450" duration="445000" />
+      <workItem from="1764942105557" duration="34600000" />
+      <workItem from="1765157784475" duration="21095000" />
+      <workItem from="1765196817990" duration="8897000" />
+      <workItem from="1765371161646" duration="7879000" />
+      <workItem from="1765415782113" duration="9449000" />
+      <workItem from="1765465008577" duration="2806000" />
+      <workItem from="1765501538140" duration="11192000" />
+      <workItem from="1765529978178" duration="46000" />
+      <workItem from="1765530750760" duration="47000" />
+      <workItem from="1765589384835" duration="2519000" />
+      <workItem from="1765764138230" duration="3819000" />
+      <workItem from="1765798713354" duration="1341000" />
+      <workItem from="1765847736001" duration="830000" />
+      <workItem from="1765875379829" duration="1363000" />
+      <workItem from="1765877089856" duration="4823000" />
+      <workItem from="1765933793060" duration="620000" />
+      <workItem from="1765942478746" duration="9678000" />
+      <workItem from="1765982897302" duration="350000" />
+      <workItem from="1766020003147" duration="7149000" />
+      <workItem from="1766222432947" duration="1243000" />
+      <workItem from="1766365935033" duration="96000" />
+      <workItem from="1766392169646" duration="49000" />
+      <workItem from="1766460912540" duration="956000" />
+      <workItem from="1766463549313" duration="4281000" />
+      <workItem from="1766538550700" duration="19259000" />
+      <workItem from="1766579757186" duration="11020000" />
+      <workItem from="1766625051658" duration="27173000" />
+      <workItem from="1766663352059" duration="11731000" />
+      <workItem from="1766716692431" duration="19211000" />
+      <workItem from="1766830066025" duration="18149000" />
+      <workItem from="1766895901223" duration="15479000" />
+      <workItem from="1766972163772" duration="13569000" />
+      <workItem from="1767013801957" duration="1988000" />
+      <workItem from="1767056574737" duration="10505000" />
+      <workItem from="1767182792567" duration="603000" />
+      <workItem from="1767419019249" duration="3790000" />
+      <workItem from="1767445663459" duration="11785000" />
+      <workItem from="1767491302739" duration="16193000" />
+      <workItem from="1767577385749" duration="7554000" />
+      <workItem from="1767663717720" duration="6005000" />
+      <workItem from="1767750501130" duration="18909000" />
+      <workItem from="1767836659159" duration="9467000" />
+      <workItem from="1767922804158" duration="7037000" />
+      <workItem from="1768271481182" duration="8940000" />
+      <workItem from="1768357267015" duration="18689000" />
+      <workItem from="1768441354450" duration="8269000" />
+      <workItem from="1768527860037" duration="18088000" />
+      <workItem from="1768636011517" duration="2002000" />
+      <workItem from="1768722152559" duration="1260000" />
+      <workItem from="1768786645491" duration="5232000" />
+      <workItem from="1768873020782" duration="738000" />
+      <workItem from="1768959729344" duration="3009000" />
+      <workItem from="1769045945927" duration="2111000" />
+      <workItem from="1769146633015" duration="608000" />
+      <workItem from="1769433838473" duration="1587000" />
+      <workItem from="1769677643273" duration="4653000" />
+      <workItem from="1769736645606" duration="164000" />
+      <workItem from="1770113764983" duration="138000" />
+      <workItem from="1770169050153" duration="4000" />
+      <workItem from="1772002266675" duration="317000" />
+      <workItem from="1772006475348" duration="1923000" />
+      <workItem from="1772069263626" duration="398000" />
+      <workItem from="1772076083464" duration="725000" />
+      <workItem from="1772078097507" duration="1873000" />
+      <workItem from="1772096241777" duration="850000" />
+      <workItem from="1772155925628" duration="193000" />
+      <workItem from="1772170542838" duration="892000" />
+      <workItem from="1772246313345" duration="96000" />
+      <workItem from="1773045708919" duration="1268000" />
+      <workItem from="1779874792405" duration="1273000" />
+      <workItem from="1779955220316" duration="841000" />
+      <workItem from="1781439160861" duration="16078000" />
+      <workItem from="1781486719827" duration="19682000" />
+      <workItem from="1781572191297" duration="11684000" />
+      <workItem from="1782090929239" duration="38000" />
+      <workItem from="1782176922913" duration="17000" />
+      <workItem from="1782179065291" duration="72000" />
+      <workItem from="1782439020777" duration="234000" />
+      <workItem from="1782439815577" duration="1102000" />
+      <workItem from="1782456859752" duration="63000" />
+      <workItem from="1782457316155" duration="18000" />
+      <workItem from="1782459337518" duration="1630000" />
+      <workItem from="1782477998904" duration="17000" />
+      <workItem from="1782490974813" duration="65000" />
+      <workItem from="1782576575966" duration="2274000" />
+      <workItem from="1782701546225" duration="27000" />
+      <workItem from="1783041471040" duration="132000" />
+      <workItem from="1783046332012" duration="264000" />
+      <workItem from="1783220141767" duration="26186000" />
+      <workItem from="1783300329299" duration="22296000" />
+      <workItem from="1783348351929" duration="6076000" />
+      <workItem from="1783387012483" duration="5514000" />
+      <workItem from="1783425378481" duration="569000" />
+      <workItem from="1783431182052" duration="5343000" />
+      <workItem from="1783472656949" duration="12496000" />
+      <workItem from="1783515719511" duration="11827000" />
+      <workItem from="1783528855258" duration="2555000" />
+      <workItem from="1783561648836" duration="17940000" />
+      <workItem from="1783646220681" duration="1765000" />
+      <workItem from="1783659650490" duration="17236000" />
+      <workItem from="1783688206259" duration="60296000" />
+      <workItem from="1783905899086" duration="24431000" />
+      <workItem from="1783947965255" duration="5358000" />
+      <workItem from="1783991377549" duration="7967000" />
+      <workItem from="1784032037698" duration="16317000" />
+      <workItem from="1784077510096" duration="8318000" />
+      <workItem from="1784095860875" duration="11000" />
+      <workItem from="1784098351773" duration="672000" />
+      <workItem from="1784107375020" duration="6801000" />
+      <workItem from="1784114854357" duration="13000" />
+      <workItem from="1784164317710" duration="19859000" />
+      <workItem from="1784217194748" duration="334000" />
+      <workItem from="1784250231925" duration="634000" />
+      <workItem from="1784253511035" duration="2243000" />
+      <workItem from="1784290606284" duration="19661000" />
+    </task>
+    <task id="LOCAL-00001" summary="refactor(log):优化日期分析类转换器实现&#10;&#10;- 引入 PoolSuppers 管理 SimpleDateFormat 实例&#10;- 替换原有并发日期格式化逻辑&#10;- 提升日期格式化性能与线程安全性&#10;- 更新相关工具类日期格式常量定义&#10;-修复 Kryo 序列化器输入输出流池化管理&#10;- 完善资源释放逻辑，避免内存泄漏&#10;- 调整项目 README 文件名称与描述信息&#10;-修正 pom.xml 中 pluginManagement 配置展开方式">
+      <option name="closed" value="true" />
+      <created>1759076192617</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1759076192617</updated>
+    </task>
+    <task id="LOCAL-00002" summary="refactor(code):重构代码包结构和依赖引用&#10;&#10;- 将工具类从 bedrock-common-tool 迁移至 bedrock-common-code- 更新包名引用路径统一为 org.bedrock.common.code&#10;- 移动 AuthUserConfiguration 配置类&#10;- 修改 BedrockTest 注解属性 enableLoader为 enableStartConfiguration&#10;- 删除 CharPool 常量接口文件&#10;- 调整 ExceptionAdviceHandler 包路径并增强注释&#10;- 统一更新各模块对 code 包下工具类的引用">
+      <option name="closed" value="true" />
+      <created>1759136355402</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759136355402</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chore(deps): 调整项目依赖配置&#10;&#10;- 在 bedrock-common-code 模块中添加 spring-boot-starter-aop 依赖- 修改 bedrock-common-dependencies 中 flatten-maven-plugin 插件配置，  设置 inherited为 false，updatePomFile 为 false，并移除 dependencies 配置&#10;- 移除 bedrock-common-test 模块中多余的空行&#10;- 从根 pom.xml 文件中移除重复的 spring-boot-starter-aop 和 spring-boot-starter-test 依赖声明- 保留 spring-boot-configuration-processor 并添加 Lombok 依赖注释">
+      <option name="closed" value="true" />
+      <created>1759138373815</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759138373815</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat(common): 增强AntPathUtil匹配功能并优化系统常量配置- 新增支持List&lt;String&gt;类型的路径匹配方法&#10;-为AntPathUtil的match方法增加空值判断&#10;- 将AppConstant拆分为EnvConstant以区分环境常量&#10;- 更新Feign客户端和服务启动相关常量引用&#10;- 优化ServerInfo启动时间初始化逻辑&#10;- 改进StartConfiguration的setProperty方法链式调用&#10;- 配置Swagger默认扫描包路径为org.bedrock- 升级maven-flatten插件配置更新POM文件&#10;- 调整R类注解顺序以优化代码结构">
+      <option name="closed" value="true" />
+      <created>1759152225887</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759152225887</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor(core):优化AntPathUtil匹配参数类型并更新Nacos配置常量&#10;&#10;- 将AntPathUtil.match方法的参数类型从List改为Collection&#10;- 更新Nacos配置前缀从&quot;dedrock&quot;到&quot;application&quot;&#10;- 更新Nacos配置文件类型从&quot;yaml&quot;到&quot;yml&quot;&#10;- 调整MyBatis Plus的mapper-locations路径&#10;- 修改Maven编译插件配置，移除parameters编译参数- 更新pom.xml中properties元素的处理方式为expand">
+      <option name="closed" value="true" />
+      <created>1759228861759</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759228861759</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat(boot): 添加boot.yml配置文件并优化资源处理&#10;&#10;- 引入@BedrockPropertySource注解加载boot.yml配置&#10;- 添加对静态资源未找到异常的处理&#10;- 调整NoHandlerFoundException日志级别为error&#10;- 优化Maven资源过滤配置, 排除二进制文件避免损坏&#10;- 配置文件上传大小限制为2048MB&#10;- 启用MVC无处理器时抛出异常机制">
+      <option name="closed" value="true" />
+      <created>1759244280078</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759244280078</updated>
+    </task>
+    <task id="LOCAL-00007" summary="build(maven): 更新编译器配置以支持参数名称保留&#10;&#10;- 添加 -parameters 编译器参数以保留方法参数名称- 使用项目属性统一管理源代码编码设置&#10;&#10;refactor(api): 移除 R 类中的 Jackson 序列化注解&#10;&#10;- 删除 ToStringSerializer 注解，简化时间戳字段序列化逻辑&#10;- 移除不必要的 Jackson 导入包依赖">
+      <option name="closed" value="true" />
+      <created>1759264541470</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759264541470</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chore(deps): 调整项目依赖配置&#10;&#10;- 移除 bedrock-common-boot 模块中的 jaxb 和 bcprov 依赖- 在 bedrock-common-code 模块中添加 bcprov 依赖&#10;- 统一管理 bcprov、jsr305、protostuff、kryo、fst 和 java-object-diff 等依赖版本&#10;-修正 maven-flatten 插件版本属性引用错误&#10;- 添加编译参数支持- 移除重复的 maven-jar-plugin 配置- 统一 maven-source-plugin 版本管理">
+      <option name="closed" value="true" />
+      <created>1759295986536</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759295986536</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refactor(auth):重构令牌生成器和认证逻辑- 移除 TokenCreateHandler 依赖，将其功能整合到 JwtTokenEnhancerHandler&#10;- 支持多个 TokenEnhancerHandler 处理器链式调用&#10;- 添加 JwtTokenEnhancerHandler 实现令牌创建逻辑&#10;- 调整 PasswordTokenGranter 和 RefreshTokenGranter 构造函数参数&#10;- 优化认证用户信息获取逻辑，移除 account 字段&#10;- 统一使用 USERNAME 常量替代硬编码字符串- 添加默认元数据对象处理器 DefaultMetaObjectHandler- 优化 Nacos 配置加载逻辑，移除重复配置项- 添加日期时间工具类方法和对象工具类方法&#10;- 更新 Feign 客户端扫描路径表达式">
+      <option name="closed" value="true" />
+      <created>1759441411338</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759441411338</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat(constant): 添加顶级父级ID常量并优化缓存前缀- 在 BedrockDBConstant 中添加 DB_TOP_PARENT_ID 常量，值为 0L&#10;- 移除 CacheConstant 中各缓存前缀末尾的冒号，统一格式">
+      <option name="closed" value="true" />
+      <created>1759502364600</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759502364600</updated>
+    </task>
+    <task id="LOCAL-00011" summary="refactor(auth):优化客户端详情查询逻辑- 移除不必要的 Getter 注解- 查询语句中添加 is_deleted =0 条件过滤已删除客户端&#10;- 优化数据权限查询 SQL，关联角色权限表并过滤已删除记录&#10;- 修改缓存键命名规则，去除冗余的 mapperId 部分- 数据权限查询结果增加 Optional 判断避免空指针异常&#10;- MyBatis Plus 配置文件中完善逻辑删除字段配置&#10;- API 权限查询 SQL 关联权限表并添加删除状态过滤&#10;- 树形工具类中修复节点映射时的重复键冲突问题">
+      <option name="closed" value="true" />
+      <created>1759662044199</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759662044199</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat(resource): 新增资源管理模块&#10;&#10;- 新增邮件、OSS、短信模板工厂及配置类&#10;- 实现本地OSS存储模板及工厂- 添加OSS、邮件、短信枚举类型&#10;- 新增OSS、邮件、短信属性模型&#10;- 新增OSS文件上传结果模型- 新增OSS操作接口模板&#10;- 添加文件工具类获取完整后缀名和文件名主体方法&#10;- 添加日期工具类无分隔符日期格式化器&#10;- 修改树节点排序方法支持null值处理&#10;- 调整swagger ui标签和操作排序方式为order&#10;- 新增bedrock-common-resource模块并添加依赖配置">
+      <option name="closed" value="true" />
+      <created>1759921460173</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759921460173</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat(email): 实现邮件发送功能模块&#10;&#10;- 新增邮件发送接口 EmailTemplate 及其 Spring 实现类 SpringEmailTemplate- 添加邮件配置类 EmailProperties 和相关常量 MailConstant&#10;- 引入邮件发送依赖 spring-boot-starter-mail&#10;- 创建邮件工厂类 SpringEmailFactoryBean 用于创建邮件模板实例- 新增邮件发送实体类 EmailSend、EmailSendCCAndBCC、EmailSendAttachment- 新增附件数据源类 AttachmentDataSource 支持附件与内联元素发送&#10;- 邮件属性模型迁移至 org.bedrock.common.resource.model.email 包下&#10;- 邮件枚举 EmailEnum 增加 SPRING 类型并添加依赖说明注释&#10;- 邮件配置类 EmailConfiguration 增加 springEmailFactoryBean 的 Bean 定义&#10;- IoUtil 工具类新增 copyToByteArray 方法用于流转换- OSS 相关模型类迁移至对应的 oss 子包中&#10;- SMS 相关模型类迁移至对应的 sms 子包中&#10;-修复 OssConfiguration 中 localOssFactoryBean 缺失的 ConditionalOnMissingBean 注解">
+      <option name="closed" value="true" />
+      <created>1759926545284</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1759926545284</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor(common): 统一使用 ThreadLocalUtil.set 方法并优化工具类实现&#10;&#10;- 将所有 put 方法调用替换为 set 方法-重构 ThreadLocalUtil 类，移除旧版注释和冗余代码- 新增 getOrElse、getOrCreate、has、getOrThrow 等便捷方法&#10;- 移除无用的 BufferedInputStream 使用- 添加 BaseController 中的 downloadFile 字节流下载方法&#10;- 统一 MediaType 使用标准常量值">
+      <option name="closed" value="true" />
+      <created>1760428026596</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1760428026596</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor(mybatisplus):优化逻辑删除方法并增强druid配置&#10;&#10;- 修改logicRemoveById和logicRemoveByIds方法使用getBaseMapper().update方式&#10;- 新增更新时间与更新用户ID字段设置- 引入AuthUtil获取当前用户ID- 调整DruidConfiguration配置类加载顺序&#10;- 更新异常处理器中静态资源未找到的提示文案&#10;-修复树节点接口isHasChild方法名为isHasChildren&#10;- 优化protostuff序列化泛型支持&#10;- 修改redis默认序列化方式为protostuff并标注kryo存在反序列化bug&#10;- 修复TreeUtil中toList为collect(Collectors.toList())以兼容java17">
+      <option name="closed" value="true" />
+      <created>1760859001204</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1760859001204</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat(log): 异步保存操作日志并完善Feign接口定义&#10;&#10;- 抽离DataPermissionSqlProcessor接口，提升扩展性&#10;- 在DefaultLogSaveServiceImpl中添加@Async注解，实现操作日志异步保存&#10;- 为ILogSaveFeign接口的save方法参数添加@RequestBody注解，明确请求体绑定&#10;- 引入Spring Web和Scheduling相关注解支持异步调用与Feign客户端功能">
+      <option name="closed" value="true" />
+      <created>1761298668445</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1761298668445</updated>
+    </task>
+    <task id="LOCAL-00017" summary="refactor(security): 重命名权限表达式根对象类名并更新引用&#10;&#10;- 将 PrePermissionExpressionRoot 类重命名为 SecurityExpressionExpressionRoot&#10;- 更新所有相关的导入和引用路径&#10;- 修改配置类中的 Bean 定义名称及参数类型&#10;- 更新注解文档中对权限表达式根对象的引用说明&#10;- 调整 AOP 切面中使用的表达式根对象实例名称- 新增 LICENSE 文件，添加 MIT 许可证内容&#10;-修正数据范围查询 SQL 语句选择字段为 id 而非 ancestors">
+      <option name="closed" value="true" />
+      <created>1761810874521</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1761810874521</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat(common): 引入WebSocket支持并优化认证日志模块&#10;&#10;- 新增bedrock-common-websocket模块，支持WebSocket功能&#10;- 添加Spring Cloud Alibaba Sentinel依赖及自动配置&#10;-修复AbstractTokenGranter中返回结果错误问题&#10;-优化AuthUtil工具类，提取getToken方法&#10;-修复JsonUtil中paras方法名错误，统一改为parse&#10;-优化日志记录模块，完善请求信息收集和用户标识&#10;- 调整MybatisPlus配置，忽略表名集合类型由List改为Set&#10;- 修复JWT令牌增强处理器执行顺序问题&#10;- 完善树形结构工具类，支持处理父节点缺失情况&#10;- 优化Redis流消息监听器配置，添加线程池支持&#10;- 完善Feign接口Sentinel熔断降级处理逻辑&#10;- 更新实体序列化标识符作用域及注释说明">
+      <option name="closed" value="true" />
+      <created>1762162589617</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1762162589617</updated>
+    </task>
+    <task id="LOCAL-00019" summary="feat(tenant): 引入多租户支持模块&#10;&#10;- 新增 bedrock-common-tenant 模块，支持多租户功能&#10;- 实现租户ID的线程上下文传递与自动填充- 添加租户忽略注解 @TenantIgnore 及切面处理&#10;- 提供默认租户处理器 DefaultTenantHandler与配置类- 支持通过 TenantHandler 工具类进行租户切换与忽略操作&#10;- 增加租户实体基类 TenantEntity 与相关常量定义- 完善 ThreadLocalUtil 工具类，支持批量设置与获取线程变量&#10;- 优化 MybatisPlus 配置，确保元数据处理器正确加载&#10;- 在 pom.xml 中引入 bedrock-common-tenant 模块依赖- 添加 tenant 模块的自动配置类与属性配置类 TenantProperties">
+      <option name="closed" value="true" />
+      <created>1762248604340</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1762248604340</updated>
+    </task>
+    <task id="LOCAL-00020" summary="refactor(auth):重构认证模块包结构和配置逻辑&#10;&#10;- 将 suppers 包重命名为 support 包，统一代码结构-优化 TokenGranter 配置，引入 AuthorizationServerConfigurer 接口- 移除冗余的 PasswordTokenGranter 和 RefreshTokenGranter 直接依赖&#10;- 添加动态数据源模块 bedrock-common-dynamic&#10;- 实现数据源运行时加载和启动时加载机制- 更新 Druid 配置，移除 slf4j filter- 重构日期工具类，替换 PoolSuppers为 PoolSupport-优化多租户处理器逻辑，增加注释说明- 调整 MyBatis Plus 和 Dynamic Datasource 版本配置&#10;- 完善相关类的导入路径引用">
+      <option name="closed" value="true" />
+      <created>1762499352590</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1762499352590</updated>
+    </task>
+    <task id="LOCAL-00021" summary="refactor(core): 优化租户ID获取逻辑与文件信息处理&#10;&#10;- 调整 AuthUtil.getTenantId() 方法实现，优先从 MDC 获取租户 ID&#10;- 新增 AuthUtil.getLoginTenantId() 方法用于获取登录用户租户 ID&#10;- 修改 DefaultTenantHandler.defaultExcludes 为 defaultIncludes 并调整判断逻辑&#10;- 注释掉管理员跳过租户检查逻辑&#10;- 将 LogUtil.FileInfo 类改为 record 形式并重命名方法 extractFileInfo 为 from&#10;- 更新 RequestLogAspect 中对 FileInfo 的调用方式&#10;- 重构 SpElParserUtil 增加多个泛型解析方法并移除冗余代码">
+      <option name="closed" value="true" />
+      <created>1763965917265</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1763965917265</updated>
+    </task>
+    <task id="LOCAL-00022" summary="feat(common): 引入通用结果码和结果类优化&#10;&#10;- 新增 CommonResultCode 枚举定义标准响应码和消息&#10;- 新增 ResultCode 接口规范 getCode 和 getMessage 方法&#10;- 修改 R 类使用 CommonResultCode 替代硬编码 HTTP 状态码&#10;- 为 R 类新增 ok、failure、error 等重载方法支持 ResultCode&#10;- ServiceException 类增加基于 ResultCode 的构造方法&#10;- 提升代码可维护性和扩展性，统一响应格式处理逻辑">
+      <option name="closed" value="true" />
+      <created>1764132910335</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1764132910335</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat(common): 添加数组空值判断工具方法并优化日志显示&#10;&#10;- 在 CollectionUtil 中增加对 Object[] 的 isEmpty 和 isNotEmpty 判断&#10;- 将 CommonResultCode 中的 Integer 类型字段改为基本类型 int&#10;- 为 OAuth2Exception 增加基于 ResultCode 的构造函数支持&#10;- 统一修改 RequestLogAspect 中请求与响应日志的起始和结束标识&#10;- 优化 ResultCode 接口中的消息格式化逻辑，避免无参数时的无效调用">
+      <option name="closed" value="true" />
+      <created>1764572233802</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1764572233802</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat(excel): 新增Excel导入导出功能模块&#10;&#10;- 添加 bedrock-common-excel 模块，集成 fastexcel 库&#10;- 实现 @RequestExcel 注解，支持自动解析Excel文件为Java对象列表&#10;- 实现 @ResponseExcel 注解，支持将Java对象列表自动导出为Excel文件&#10;- 提供 ExcelUtil 工具类，封装常用的Excel读写操作&#10;- 添加 ExcelConfiguration 配置类，自动注册Excel参数解析器和返回值处理器&#10;- 支持自定义Excel监听器，允许跳过指定行数和自定义解析逻辑&#10;- 支持多sheet页的Excel导入导出&#10;- 支持密码保护和内存模式导出Excel文件&#10;- 完善相关依赖管理和自动配置支持">
+      <option name="closed" value="true" />
+      <created>1764739970408</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764739970408</updated>
+    </task>
+    <task id="LOCAL-00025" summary="refactor(core): 重构SpEL表达式工具类并优化Excel导出功能&#10;&#10;- 将SpElParserUtil重命名为SpELParserUtil，统一命名规范&#10;- 为SpEL解析器添加表达式缓存机制，提升性能&#10;- 优化Excel导出工具类，增加自定义写入处理器支持&#10;- 在Excel配置类中添加默认转换器和解析器配置&#10;- 移除不必要的ApplicationContext导入依赖&#10;- 更新相关调用点以适配新的工具类方法签名&#10;- 修复URLEncoder编码时字符集参数使用不一致的问题&#10;- 完善Excel工具类的静态初始化和组件注册逻辑">
+      <option name="closed" value="true" />
+      <created>1765465175986</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1765465175986</updated>
+    </task>
+    <task id="LOCAL-00026" summary="refactor(excel): 重构Excel下拉列表校验逻辑&#10;&#10;- 将Excel下拉列表校验相关代码从ExcelCustomizeWriteHandler迁移至ExcelUtil工具类&#10;- 新增OptionsSheet模型类用于管理隐藏选项表&#10;- 优化下拉列表数据验证的创建和管理逻辑&#10;- 统一数据有效性约束条件的构建方式&#10;- 改进级联下拉列表的实现机制&#10;- 移除冗余的导入包和无用代码&#10;- 提升代码复用性和维护性">
+      <option name="closed" value="true" />
+      <created>1765467743658</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1765467743658</updated>
+    </task>
+    <task id="LOCAL-00027" summary="feat(excel): 支持Excel表头描述富文本样式配置&#10;&#10;- 新增WriteFontParser类解析富文本标签&#10;- 在ExcelHeaderDesc注解中扩展富文本支持说明&#10;- 修改ExcelCustomizeWriteHandler以应用富文本样式&#10;- 更新隐藏工作表命名规则避免冲突&#10;- 完善ExcelUtil工具类中的相关逻辑">
+      <option name="closed" value="true" />
+      <created>1765519919881</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1765519919881</updated>
+    </task>
+    <task id="LOCAL-00028" summary="feat(excel): 支持动态下拉选项及写入增强功能&#10;&#10;- 支持动态下拉选项返回 List&lt;ExcelDownOption&gt; 类型&#10;- 优化 SpEL 表达式解析逻辑，兼容更多返回类型&#10;- 增强 Excel 写入处理器样式设置能力&#10;- 统一字体大小属性命名为 fontHeightInPoints&#10;- 调整注解属性顺序以提升可读性">
+      <option name="closed" value="true" />
+      <created>1765529523153</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1765529523153</updated>
+    </task>
+    <task id="LOCAL-00029" summary="refactor(log): 优化日志配置加载方式&#10;&#10;- 移除针对不同环境(dev/prod/test)的日志配置分别引入逻辑&#10;- 统一通过PROFILE变量动态加载对应环境的日志配置文件&#10;- 在LoggerStartupListener中设置PROFILE属性值用于配置文件引用&#10;- 简化日志配置结构,提高可维护性与扩展性">
+      <option name="closed" value="true" />
+      <created>1765878949789</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1765878949789</updated>
+    </task>
+    <task id="LOCAL-00030" summary="refactor(common): 重构字段元数据处理和线程本地存储机制&#10;&#10;- 将 FieldParameter 重命名为 FieldMeta 并迁移至 reflects 包&#10;- 优化 ContextTaskDecorator 中的数据范围和租户处理逻辑&#10;- 重构 DefaultConverter 和 ExcelConverterResolver 以使用 FieldMeta&#10;- 在 DataScopeAuthHolder 中添加静态初始化块注册忽略的线程本地键&#10;- 更新 StringUtil.resolve 为 StringUtil.format 方法调用&#10;- 扩展 FileUtil 类添加临时目录、文件流转换等实用方法&#10;- 修改 IoUtil 中 EMPTY_CONTENT 为 public 访问级别&#10;- 增强 JsonUtil 提供更多对象转换方法并更新 getJavaType 参数类型">
+      <option name="closed" value="true" />
+      <created>1767508764297</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1767508764297</updated>
+    </task>
+    <task id="LOCAL-00031" summary="feat(http): 增强Bedrock HTTP客户端功能&#10;&#10;- 添加协议版本支持和超时配置选项&#10;- 扩展BedrockClient注解增加详细文档说明&#10;- 增加日志配置注解LogConf和相关属性&#10;- 重构参数元数据类统一关联HTTP请求实例&#10;- 添加转换器异常处理改进错误报告&#10;- 扩展HTTP配置类增加链式调用支持&#10;- 增加多部分表单参数处理和边界生成逻辑&#10;- 优化响应处理支持void类型返回值&#10;- 增强拦截器链控制和日志配置构建">
+      <option name="closed" value="true" />
+      <created>1767959555651</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1767959555651</updated>
+    </task>
+    <task id="LOCAL-00032" summary="refactor(http): 重构HTTP日志拦截器提升代码质量和功能&#10;&#10;- 重新设计日志拦截器架构，分离请求和响应日志打印逻辑&#10;- 新增请求/响应头信息拼接公共方法，消除重复代码&#10;- 优化响应体打印逻辑，增加二进制数据和异常情况处理&#10;- 添加空指针安全检查，避免潜在的NPE异常&#10;- 改进日志格式输出，提升可读性&#10;- 完善日志配置获取逻辑，支持请求级和全局配置优先级&#10;- 修复原始代码中的潜在安全隐患和边界条件问题">
+      <option name="closed" value="true" />
+      <created>1768285007155</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1768285007155</updated>
+    </task>
+    <task id="LOCAL-00033" summary="feat(http): 添加HTTP代理和重试功能支持&#10;&#10;- 新增HttpProxy注解用于配置代理服务器信息&#10;- 新增Retry注解用于配置请求重试策略&#10;- 实现HttpProxyInterceptor拦截器处理代理配置&#10;- 实现RetryAnalysisInterceptor和RetryInterceptor处理重试逻辑&#10;- 添加HttpProxyMeta和RetryMeta模型类管理代理和重试元数据&#10;- 在OkHttpExecutor中实现代理连接和认证功能&#10;- 集成spring-retry依赖支持重试机制&#10;- 更新ProtocolVersion枚举格式化代码结构">
+      <option name="closed" value="true" />
+      <created>1768465347501</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1768465347501</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat(http): 增加SSL证书配置功能并优化注解文档&#10;&#10;- 在BedrockClient注解中新增sslContextProvider和disableSslValidation属性&#10;- 在Request和GetRequest注解中新增SSL相关配置属性&#10;- 实现SSL上下文提供者注册中心和管理机制&#10;- 在OkHttpExecutor中集成SSL证书校验规则配置&#10;- 重构HttpConfiguration增加SSL上下文提供者管理方法&#10;- 更新HttpRequest类支持SSL相关配置和链式调用&#10;- 优化各注解的JavaDoc文档描述和参数说明&#10;- 调整注解属性顺序和命名以提高可用性">
+      <option name="closed" value="true" />
+      <created>1768474667615</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1768474667615</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat(http): 添加HTTP请求方法注解并更新测试用例&#10;&#10;- 新增DeleteRequest注解用于DELETE请求&#10;- 新增HeadRequest注解用于HEAD请求&#10;- 新增OptionsRequest注解用于OPTIONS请求&#10;- 新增PatchRequest注解用于PATCH请求&#10;- 新增PostRequest注解用于POST请求&#10;- 新增PutRequest注解用于PUT请求&#10;- 更新Test.java中的JWT令牌有效期&#10;- 修改测试接口从GET请求改为DELETE请求&#10;- 添加disableSslValidation配置选项&#10;- 移除HttpProxy代理配置注释">
+      <option name="closed" value="true" />
+      <created>1768475290132</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1768475290132</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat(http): 添加批量请求头功能和HTTP工具类&#10;&#10;- 在HeadersMeta中新增addHeaders方法支持批量添加请求头&#10;- 在HttpRequest中新增addHeaders方法支持批量设置请求头&#10;- 在RequestMetaInterceptor中添加空值检查避免空指针异常&#10;- 新增HttpUtil工具类提供GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS/TRACE全方法支持&#10;- 优化Test类中的注释代码并修复注解使用错误">
+      <option name="closed" value="true" />
+      <created>1768534656645</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1768534656645</updated>
+    </task>
+    <task id="LOCAL-00037" summary="refactor(http): 重构SSL验证逻辑实现&#10;&#10;- 将SSL验证禁用逻辑从拦截器移动到HttpRequest类中&#10;- 在enableSslValidation方法中直接设置TrustAllSslContextProvider实例&#10;- 移除RequestInterceptor中的重复SSL上下文配置代码&#10;- 清理相关的导入语句和无用的代码块&#10;- 更新测试代码以使用新的SSL验证启用方式">
+      <option name="closed" value="true" />
+      <created>1768535420346</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1768535420346</updated>
+    </task>
+    <task id="LOCAL-00038" summary="feat(http): 添加禁用SSL证书验证功能&#10;&#10;- 新增disableSslValidation方法用于禁用SSL证书有效性校验&#10;- 实现TrustAllSslContextProvider.INSTANCE来信任所有SSL证书&#10;- 添加else if逻辑确保在启用SSL验证时重置sslContextProvider为null&#10;- 提供便捷的SSL验证控制选项以支持开发测试环境需求">
+      <option name="closed" value="true" />
+      <created>1768541906910</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1768541906910</updated>
+    </task>
+    <task id="LOCAL-00039" summary="feat(http): 添加Cookie管理和HeaderMeta优化功能&#10;&#10;- 修改HeaderMeta类将value字段类型从String改为Object，增加getValue和getOriginalValue方法&#10;- 添加CookieMeta类实现Cookie数据模型，支持Cookie属性解析、合并和序列化功能&#10;- 添加CookiesMeta类实现Cookie集合管理，支持同名Cookie自动合并属性&#10;- 在HeadersMeta中添加Cookie相关操作方法，包括添加、获取和解析Cookie功能&#10;- 在HttpRequest中扩展Cookie操作接口，提供链式调用支持&#10;- 在HttpResponse中添加Set-Cookie相关的获取方法&#10;- 修改HeadersMeta的各类添加方法返回自身实例以支持链式调用&#10;- 实现Cookie字符串解析和标准格式序列化功能">
+      <option name="closed" value="true" />
+      <created>1768788614995</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1768788614995</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix(http): 优化HeadersMeta中getSetCookie方法性能&#10;&#10;- 在getSetCookie(String name)方法中添加header类型检查，跳过非SET_COOKIE类型的header&#10;- 在getSetCookie()方法中添加header类型检查，跳过非SET_COOKIE类型的header&#10;- 避免对非CookieMeta类型的header进行不必要的类型转换和比较操作&#10;- 提高方法执行效率，减少无效遍历次数">
+      <option name="closed" value="true" />
+      <created>1768788741452</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1768788741452</updated>
+    </task>
+    <task id="LOCAL-00041" summary="refactor(http): 移除 HeadersMeta 中的 Lombok 注解&#10;&#10;- 移除了 @Getter、@Setter 和 @ToString 注解&#10;- 保留了 HeaderEnum 和 ArrayList 的导入&#10;- 简化了类的注解依赖">
+      <option name="closed" value="true" />
+      <created>1768788795282</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1768788795282</updated>
+    </task>
+    <task id="LOCAL-00042" summary="refactor(http): 使用常量池优化Cookie解析逻辑&#10;&#10;- 引入 StringPool.SEMICOLON 常量替换硬编码分隔符&#10;- 提高代码可维护性和一致性&#10;- 减少字符串重复定义">
+      <option name="closed" value="true" />
+      <created>1769066624311</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1769066624311</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fix(http): 修复HTTP拦截器和响应处理中的问题&#10;&#10;- 修复HttpProxyInterceptor中请求头添加逻辑，使用正确的对象引用&#10;- 在HttpRequest.execute方法中添加对自身类型的特殊处理逻辑&#10;- 将HttpResponse的Closeable接口改为AutoCloseable，并添加抽象close方法&#10;- 统一异常处理，将RuntimeException替换为HttpException&#10;- 使用okhttp的Util.closeQuietly安全关闭响应体&#10;- 修复ParamMeta中参数描述的分隔符格式&#10;- 添加测试代码中的资源关闭调用">
+      <option name="closed" value="true" />
+      <created>1769683714656</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1769683714656</updated>
+    </task>
+    <task id="LOCAL-00044" summary="docs(project): 更新项目文档并升级依赖版本&#10;&#10;- 更新 README.md 为详细的项目介绍文档，包含技术栈、模块说明和使用指南&#10;- 删除旧的 README.en.md 文件&#10;- 升级 Spring Boot 版本从 3.3.5 到 3.5.11&#10;- 升级 Spring Cloud 版本从 2023.0.3 到 2025.0.0&#10;- 升级 Spring Cloud Alibaba 版本从 2023.0.1.2 到 2025.0.0.0&#10;- 升级 Spring Boot Admin 版本从 3.3.6 到 3.5.7&#10;- 升级 MyBatis-Plus 版本从 3.5.13 到 3.5.15&#10;- 修改 Nacos 配置加载逻辑，添加应用名称配置支持&#10;- 优化日志配置文件中的根日志级别设置&#10;- 禁用 logback 配置文件扫描功能以提升性能">
+      <option name="closed" value="true" />
+      <created>1781440036276</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1781440036276</updated>
+    </task>
+    <task id="LOCAL-00045" summary="feat(boot): 添加启动模块和认证授权文档并更新依赖&#10;&#10;- 添加spring-boot-starter-data-redis依赖以支持eventBus的Redis功能&#10;- 更新README.md中的maven安装命令为mvn clean source:jar install&#10;- 新增启动模块(Boot)详细文档，包含快速开始、内置模块、高级配置等内容&#10;- 新增认证授权(Auth)模块文档，涵盖JWT、OAuth2、权限控制等功能说明&#10;- 新增MyBatis-Plus增强模块文档，介绍CRUD、分页、自动填充等特性">
+      <option name="closed" value="true" />
+      <created>1781492459309</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1781492459309</updated>
+    </task>
+    <task id="LOCAL-00046" summary="docs(boot): 更新启动模块文档和StartConfiguration接口说明&#10;&#10;- 完善SPI扩展机制文档，详细说明StartConfiguration接口使用方法&#10;- 添加@AutoService注解自动配置SPI的推荐方式和代码示例&#10;- 补充Nacos统一配置、多环境差异化配置、数据库连接池配置等典型应用场景&#10;- 优化StartConfiguration接口JavaDoc，增加使用步骤、最佳实践和注意事项&#10;- 删除README.md中的贡献指南和联系方式等冗余信息&#10;- 添加配置器执行顺序说明和调试技巧章节">
+      <option name="closed" value="true" />
+      <created>1781494160195</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1781494160195</updated>
+    </task>
+    <task id="LOCAL-00047" summary="refactor(eventbus): 重构事件总线实现并优化自动配置&#10;&#10;- 将本地和Redis事件总线实现改为继承抽象基类AbstractEventBus&#10;- 重构事件消息模型为EventMessage类，统一消息封装格式&#10;- 优化Redis事件总线配置，添加Redis连接工厂条件检查&#10;- 修改订阅回调参数类型为EventMessage包装对象&#10;- 删除示例代码文件EventBusExample.java&#10;- 为EventBusType枚举添加标题属性&#10;- 优化Topic树结构实现，改进通配符匹配逻辑&#10;- 添加Swagger相关依赖配置和Knife4j自定义器&#10;- 调整Redis模板序列化器配置&#10;- 使用静态内部类方式分离本地和Redis事件总线自动配置">
+      <option name="closed" value="true" />
+      <created>1781581526950</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1781581526950</updated>
+    </task>
+    <task id="LOCAL-00048" summary="docs(boot): 更新启动模块和认证授权文档&#10;&#10;- 重构启动模块文档结构，移除冗余内容&#10;- 更新微服务项目推荐使用 bedrock-common-cloud 模块&#10;- 优化 BedrockApplication 和 @BedrockCloudApplication 使用说明&#10;- 修正配置文件格式和参数说明&#10;- 更新认证授权模块文档，简化 JWT 配置说明&#10;- 添加模块职责划分和使用示例">
+      <option name="closed" value="true" />
+      <created>1783308617589</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1783308617589</updated>
+    </task>
+    <task id="LOCAL-00049" summary="feat(ai): 新增AI模块并扩展通用工具类功能&#10;&#10;- 添加bedrock-common-ai模块，集成多种AI大模型依赖（OpenAI、Anthropic、Google GenAI、Azure等）&#10;- 扩展MediaTypeUtil工具类，增加文件MIME类型解析和判断功能&#10;- 增强StringUtil工具类，添加字符串转换和格式化方法&#10;- 添加ResourceUtil资源加载工具类，支持多种协议资源访问&#10;- 在boot.yml配置undertow大文件上传参数&#10;- 添加spring-boot-admin-starter-client依赖用于服务监控&#10;- 在CacheConstant中新增AI缓存常量">
+      <option name="closed" value="true" />
+      <created>1784449530467</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1784449530467</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor(core): 重构SpEL表达式工具类并优化Excel导出功能&#10;&#10;- 将SpElParserUtil重命名为SpELParserUtil，统一命名规范&#10;- 为SpEL解析器添加表达式缓存机制，提升性能&#10;- 优化Excel导出工具类，增加自定义写入处理器支持&#10;- 在Excel配置类中添加默认转换器和解析器配置&#10;- 移除不必要的ApplicationContext导入依赖&#10;- 更新相关调用点以适配新的工具类方法签名&#10;- 修复URLEncoder编码时字符集参数使用不一致的问题&#10;- 完善Excel工具类的静态初始化和组件注册逻辑" />
+    <MESSAGE value="refactor(excel): 重构Excel下拉列表校验逻辑&#10;&#10;- 将Excel下拉列表校验相关代码从ExcelCustomizeWriteHandler迁移至ExcelUtil工具类&#10;- 新增OptionsSheet模型类用于管理隐藏选项表&#10;- 优化下拉列表数据验证的创建和管理逻辑&#10;- 统一数据有效性约束条件的构建方式&#10;- 改进级联下拉列表的实现机制&#10;- 移除冗余的导入包和无用代码&#10;- 提升代码复用性和维护性" />
+    <MESSAGE value="feat(excel): 支持Excel表头描述富文本样式配置&#10;&#10;- 新增WriteFontParser类解析富文本标签&#10;- 在ExcelHeaderDesc注解中扩展富文本支持说明&#10;- 修改ExcelCustomizeWriteHandler以应用富文本样式&#10;- 更新隐藏工作表命名规则避免冲突&#10;- 完善ExcelUtil工具类中的相关逻辑" />
+    <MESSAGE value="feat(excel): 支持动态下拉选项及写入增强功能&#10;&#10;- 支持动态下拉选项返回 List&lt;ExcelDownOption&gt; 类型&#10;- 优化 SpEL 表达式解析逻辑，兼容更多返回类型&#10;- 增强 Excel 写入处理器样式设置能力&#10;- 统一字体大小属性命名为 fontHeightInPoints&#10;- 调整注解属性顺序以提升可读性" />
+    <MESSAGE value="refactor(log): 优化日志配置加载方式&#10;&#10;- 移除针对不同环境(dev/prod/test)的日志配置分别引入逻辑&#10;- 统一通过PROFILE变量动态加载对应环境的日志配置文件&#10;- 在LoggerStartupListener中设置PROFILE属性值用于配置文件引用&#10;- 简化日志配置结构,提高可维护性与扩展性" />
+    <MESSAGE value="refactor(common): 重构字段元数据处理和线程本地存储机制&#10;&#10;- 将 FieldParameter 重命名为 FieldMeta 并迁移至 reflects 包&#10;- 优化 ContextTaskDecorator 中的数据范围和租户处理逻辑&#10;- 重构 DefaultConverter 和 ExcelConverterResolver 以使用 FieldMeta&#10;- 在 DataScopeAuthHolder 中添加静态初始化块注册忽略的线程本地键&#10;- 更新 StringUtil.resolve 为 StringUtil.format 方法调用&#10;- 扩展 FileUtil 类添加临时目录、文件流转换等实用方法&#10;- 修改 IoUtil 中 EMPTY_CONTENT 为 public 访问级别&#10;- 增强 JsonUtil 提供更多对象转换方法并更新 getJavaType 参数类型" />
+    <MESSAGE value="feat(http): 增强Bedrock HTTP客户端功能&#10;&#10;- 添加协议版本支持和超时配置选项&#10;- 扩展BedrockClient注解增加详细文档说明&#10;- 增加日志配置注解LogConf和相关属性&#10;- 重构参数元数据类统一关联HTTP请求实例&#10;- 添加转换器异常处理改进错误报告&#10;- 扩展HTTP配置类增加链式调用支持&#10;- 增加多部分表单参数处理和边界生成逻辑&#10;- 优化响应处理支持void类型返回值&#10;- 增强拦截器链控制和日志配置构建" />
+    <MESSAGE value="refactor(http): 重构HTTP日志拦截器提升代码质量和功能&#10;&#10;- 重新设计日志拦截器架构，分离请求和响应日志打印逻辑&#10;- 新增请求/响应头信息拼接公共方法，消除重复代码&#10;- 优化响应体打印逻辑，增加二进制数据和异常情况处理&#10;- 添加空指针安全检查，避免潜在的NPE异常&#10;- 改进日志格式输出，提升可读性&#10;- 完善日志配置获取逻辑，支持请求级和全局配置优先级&#10;- 修复原始代码中的潜在安全隐患和边界条件问题" />
+    <MESSAGE value="feat(http): 添加HTTP代理和重试功能支持&#10;&#10;- 新增HttpProxy注解用于配置代理服务器信息&#10;- 新增Retry注解用于配置请求重试策略&#10;- 实现HttpProxyInterceptor拦截器处理代理配置&#10;- 实现RetryAnalysisInterceptor和RetryInterceptor处理重试逻辑&#10;- 添加HttpProxyMeta和RetryMeta模型类管理代理和重试元数据&#10;- 在OkHttpExecutor中实现代理连接和认证功能&#10;- 集成spring-retry依赖支持重试机制&#10;- 更新ProtocolVersion枚举格式化代码结构" />
+    <MESSAGE value="feat(http): 增加SSL证书配置功能并优化注解文档&#10;&#10;- 在BedrockClient注解中新增sslContextProvider和disableSslValidation属性&#10;- 在Request和GetRequest注解中新增SSL相关配置属性&#10;- 实现SSL上下文提供者注册中心和管理机制&#10;- 在OkHttpExecutor中集成SSL证书校验规则配置&#10;- 重构HttpConfiguration增加SSL上下文提供者管理方法&#10;- 更新HttpRequest类支持SSL相关配置和链式调用&#10;- 优化各注解的JavaDoc文档描述和参数说明&#10;- 调整注解属性顺序和命名以提高可用性" />
+    <MESSAGE value="feat(http): 添加HTTP请求方法注解并更新测试用例&#10;&#10;- 新增DeleteRequest注解用于DELETE请求&#10;- 新增HeadRequest注解用于HEAD请求&#10;- 新增OptionsRequest注解用于OPTIONS请求&#10;- 新增PatchRequest注解用于PATCH请求&#10;- 新增PostRequest注解用于POST请求&#10;- 新增PutRequest注解用于PUT请求&#10;- 更新Test.java中的JWT令牌有效期&#10;- 修改测试接口从GET请求改为DELETE请求&#10;- 添加disableSslValidation配置选项&#10;- 移除HttpProxy代理配置注释" />
+    <MESSAGE value="feat(http): 添加批量请求头功能和HTTP工具类&#10;&#10;- 在HeadersMeta中新增addHeaders方法支持批量添加请求头&#10;- 在HttpRequest中新增addHeaders方法支持批量设置请求头&#10;- 在RequestMetaInterceptor中添加空值检查避免空指针异常&#10;- 新增HttpUtil工具类提供GET/POST/PUT/PATCH/DELETE/HEAD/OPTIONS/TRACE全方法支持&#10;- 优化Test类中的注释代码并修复注解使用错误" />
+    <MESSAGE value="refactor(http): 重构SSL验证逻辑实现&#10;&#10;- 将SSL验证禁用逻辑从拦截器移动到HttpRequest类中&#10;- 在enableSslValidation方法中直接设置TrustAllSslContextProvider实例&#10;- 移除RequestInterceptor中的重复SSL上下文配置代码&#10;- 清理相关的导入语句和无用的代码块&#10;- 更新测试代码以使用新的SSL验证启用方式" />
+    <MESSAGE value="feat(http): 添加禁用SSL证书验证功能&#10;&#10;- 新增disableSslValidation方法用于禁用SSL证书有效性校验&#10;- 实现TrustAllSslContextProvider.INSTANCE来信任所有SSL证书&#10;- 添加else if逻辑确保在启用SSL验证时重置sslContextProvider为null&#10;- 提供便捷的SSL验证控制选项以支持开发测试环境需求" />
+    <MESSAGE value="feat(http): 添加Cookie管理和HeaderMeta优化功能&#10;&#10;- 修改HeaderMeta类将value字段类型从String改为Object，增加getValue和getOriginalValue方法&#10;- 添加CookieMeta类实现Cookie数据模型，支持Cookie属性解析、合并和序列化功能&#10;- 添加CookiesMeta类实现Cookie集合管理，支持同名Cookie自动合并属性&#10;- 在HeadersMeta中添加Cookie相关操作方法，包括添加、获取和解析Cookie功能&#10;- 在HttpRequest中扩展Cookie操作接口，提供链式调用支持&#10;- 在HttpResponse中添加Set-Cookie相关的获取方法&#10;- 修改HeadersMeta的各类添加方法返回自身实例以支持链式调用&#10;- 实现Cookie字符串解析和标准格式序列化功能" />
+    <MESSAGE value="fix(http): 优化HeadersMeta中getSetCookie方法性能&#10;&#10;- 在getSetCookie(String name)方法中添加header类型检查，跳过非SET_COOKIE类型的header&#10;- 在getSetCookie()方法中添加header类型检查，跳过非SET_COOKIE类型的header&#10;- 避免对非CookieMeta类型的header进行不必要的类型转换和比较操作&#10;- 提高方法执行效率，减少无效遍历次数" />
+    <MESSAGE value="refactor(http): 移除 HeadersMeta 中的 Lombok 注解&#10;&#10;- 移除了 @Getter、@Setter 和 @ToString 注解&#10;- 保留了 HeaderEnum 和 ArrayList 的导入&#10;- 简化了类的注解依赖" />
+    <MESSAGE value="refactor(http): 使用常量池优化Cookie解析逻辑&#10;&#10;- 引入 StringPool.SEMICOLON 常量替换硬编码分隔符&#10;- 提高代码可维护性和一致性&#10;- 减少字符串重复定义" />
+    <MESSAGE value="fix(http): 修复HTTP拦截器和响应处理中的问题&#10;&#10;- 修复HttpProxyInterceptor中请求头添加逻辑，使用正确的对象引用&#10;- 在HttpRequest.execute方法中添加对自身类型的特殊处理逻辑&#10;- 将HttpResponse的Closeable接口改为AutoCloseable，并添加抽象close方法&#10;- 统一异常处理，将RuntimeException替换为HttpException&#10;- 使用okhttp的Util.closeQuietly安全关闭响应体&#10;- 修复ParamMeta中参数描述的分隔符格式&#10;- 添加测试代码中的资源关闭调用" />
+    <MESSAGE value="docs(project): 更新项目文档并升级依赖版本&#10;&#10;- 更新 README.md 为详细的项目介绍文档，包含技术栈、模块说明和使用指南&#10;- 删除旧的 README.en.md 文件&#10;- 升级 Spring Boot 版本从 3.3.5 到 3.5.11&#10;- 升级 Spring Cloud 版本从 2023.0.3 到 2025.0.0&#10;- 升级 Spring Cloud Alibaba 版本从 2023.0.1.2 到 2025.0.0.0&#10;- 升级 Spring Boot Admin 版本从 3.3.6 到 3.5.7&#10;- 升级 MyBatis-Plus 版本从 3.5.13 到 3.5.15&#10;- 修改 Nacos 配置加载逻辑，添加应用名称配置支持&#10;- 优化日志配置文件中的根日志级别设置&#10;- 禁用 logback 配置文件扫描功能以提升性能" />
+    <MESSAGE value="feat(boot): 添加启动模块和认证授权文档并更新依赖&#10;&#10;- 添加spring-boot-starter-data-redis依赖以支持eventBus的Redis功能&#10;- 更新README.md中的maven安装命令为mvn clean source:jar install&#10;- 新增启动模块(Boot)详细文档，包含快速开始、内置模块、高级配置等内容&#10;- 新增认证授权(Auth)模块文档，涵盖JWT、OAuth2、权限控制等功能说明&#10;- 新增MyBatis-Plus增强模块文档，介绍CRUD、分页、自动填充等特性" />
+    <MESSAGE value="docs(boot): 更新启动模块文档和StartConfiguration接口说明&#10;&#10;- 完善SPI扩展机制文档，详细说明StartConfiguration接口使用方法&#10;- 添加@AutoService注解自动配置SPI的推荐方式和代码示例&#10;- 补充Nacos统一配置、多环境差异化配置、数据库连接池配置等典型应用场景&#10;- 优化StartConfiguration接口JavaDoc，增加使用步骤、最佳实践和注意事项&#10;- 删除README.md中的贡献指南和联系方式等冗余信息&#10;- 添加配置器执行顺序说明和调试技巧章节" />
+    <MESSAGE value="refactor(eventbus): 重构事件总线实现并优化自动配置&#10;&#10;- 将本地和Redis事件总线实现改为继承抽象基类AbstractEventBus&#10;- 重构事件消息模型为EventMessage类，统一消息封装格式&#10;- 优化Redis事件总线配置，添加Redis连接工厂条件检查&#10;- 修改订阅回调参数类型为EventMessage包装对象&#10;- 删除示例代码文件EventBusExample.java&#10;- 为EventBusType枚举添加标题属性&#10;- 优化Topic树结构实现，改进通配符匹配逻辑&#10;- 添加Swagger相关依赖配置和Knife4j自定义器&#10;- 调整Redis模板序列化器配置&#10;- 使用静态内部类方式分离本地和Redis事件总线自动配置" />
+    <MESSAGE value="docs(boot): 更新启动模块和认证授权文档&#10;&#10;- 重构启动模块文档结构，移除冗余内容&#10;- 更新微服务项目推荐使用 bedrock-common-cloud 模块&#10;- 优化 BedrockApplication 和 @BedrockCloudApplication 使用说明&#10;- 修正配置文件格式和参数说明&#10;- 更新认证授权模块文档，简化 JWT 配置说明&#10;- 添加模块职责划分和使用示例" />
+    <MESSAGE value="feat(ai): 新增AI模块并扩展通用工具类功能&#10;&#10;- 添加bedrock-common-ai模块，集成多种AI大模型依赖（OpenAI、Anthropic、Google GenAI、Azure等）&#10;- 扩展MediaTypeUtil工具类，增加文件MIME类型解析和判断功能&#10;- 增强StringUtil工具类，添加字符串转换和格式化方法&#10;- 添加ResourceUtil资源加载工具类，支持多种协议资源访问&#10;- 在boot.yml配置undertow大文件上传参数&#10;- 添加spring-boot-admin-starter-client依赖用于服务监控&#10;- 在CacheConstant中新增AI缓存常量" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ai): 新增AI模块并扩展通用工具类功能&#10;&#10;- 添加bedrock-common-ai模块，集成多种AI大模型依赖（OpenAI、Anthropic、Google GenAI、Azure等）&#10;- 扩展MediaTypeUtil工具类，增加文件MIME类型解析和判断功能&#10;- 增强StringUtil工具类，添加字符串转换和格式化方法&#10;- 添加ResourceUtil资源加载工具类，支持多种协议资源访问&#10;- 在boot.yml配置undertow大文件上传参数&#10;- 添加spring-boot-admin-starter-client依赖用于服务监控&#10;- 在CacheConstant中新增AI缓存常量" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/jyz/apache-maven-3.6.3-bin/repository/org/springframework/data/spring-data-redis/3.3.5/spring-data-redis-3.3.5-sources.jar!/org/springframework/data/redis/cache/RedisCache.java</url>
+          <line>220</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/jyz/apache-maven-3.6.3-bin/repository/org/springframework/data/spring-data-redis/3.3.5/spring-data-redis-3.3.5-sources.jar!/org/springframework/data/redis/cache/RedisCache.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/jyz/apache-maven-3.6.3-bin/repository/cn/idev/excel/fastexcel/1.3.0/fastexcel-1.3.0-sources.jar!/cn/idev/excel/util/StyleUtil.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://D:/jyz/maven/repository/org/springframework/ai/spring-ai-autoconfigure-model-tool/1.1.8/spring-ai-autoconfigure-model-tool-1.1.8-sources.jar!/org/springframework/ai/model/tool/autoconfigure/ToolCallingAutoConfiguration.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
