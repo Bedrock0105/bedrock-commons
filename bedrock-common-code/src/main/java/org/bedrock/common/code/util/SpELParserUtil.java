@@ -129,7 +129,11 @@ public abstract class SpELParserUtil {
 	 * 构建SpEL表达式上下文（包含方法参数和Bean解析器）
 	 */
 	public static EvaluationContext buildEvaluationContext(Method method, Object[] args, @Nullable Object rootBean) {
-		return new MethodBasedEvaluationContext(rootBean, method, args, PARAM_DISCOVERER);
+		MethodBasedEvaluationContext methodBasedEvaluationContext = new MethodBasedEvaluationContext(rootBean, method, args, PARAM_DISCOVERER);
+		if (beanResolver != null) {
+			methodBasedEvaluationContext.setBeanResolver(beanResolver);
+		}
+		return methodBasedEvaluationContext;
 	}
 
 	/**

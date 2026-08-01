@@ -7,9 +7,6 @@ import org.bedrock.common.code.util.SpringUtil;
 import org.bedrock.common.spi.autoservice.AutoService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.model.tool.ToolCallingManager;
-import org.springframework.ai.openai.OpenAiChatModel;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 
 /**
  * 零一万物 大模型构造器
@@ -19,16 +16,24 @@ import org.springframework.ai.openai.api.OpenAiApi;
 @AutoService(AiModelBuilder.class)
 public class YiAiModelBuilder implements AiModelBuilder {
 
-	/** 零一万物 OpenAI 协议默认接口地址 */
+	/**
+	 * 零一万物 OpenAI 协议默认接口地址
+	 */
 	public static final String BASE_URL = "https://api.lingyiwanwu.com";
 
-	/** 对话补全接口路径 */
+	/**
+	 * 对话补全接口路径
+	 */
 	public static final String COMPLETE_PATH = "/v1/chat/completions";
 
-	/** 默认使用模型：yi-lightning */
+	/**
+	 * 默认使用模型：yi-lightning
+	 */
 	public static final String MODEL_DEFAULT = "yi-lightning";
 
-	/** 工具调用管理器，用于函数调用能力处理 */
+	/**
+	 * 工具调用管理器，用于函数调用能力处理
+	 */
 	private final ToolCallingManager toolCallingManager;
 
 	/**
@@ -49,23 +54,7 @@ public class YiAiModelBuilder implements AiModelBuilder {
 	 */
 	@Override
 	public ChatModel createChatModel(ChatModelCreateParam param) {
-		OpenAiApi.Builder builder = OpenAiApi.builder()
-			.apiKey(param.key());
-		OpenAiCompatibleChatSupport.applyCompletionsPath(builder, param.path(), COMPLETE_PATH);
-		OpenAiCompatibleChatSupport.applyBaseUrl(builder, param.url(), BASE_URL);
-
-		// 模型默认参数配置
-		OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
-			.model(MODEL_DEFAULT)
-			.temperature(0.7)
-			.build();
-
-		return OpenAiChatModel
-			.builder()
-			.defaultOptions(openAiChatOptions)
-			.openAiApi(builder.build())
-			.toolCallingManager(toolCallingManager)
-			.build();
+		return OpenAiCompatibleModelFactory.createOpenAiChatModel(param, BASE_URL, COMPLETE_PATH, MODEL_DEFAULT, toolCallingManager);
 	}
 
 	/**

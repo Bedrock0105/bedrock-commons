@@ -63,7 +63,7 @@ public class OpenAiAiModelBuilder implements AiModelBuilder {
 
 	@Override
 	public EmbeddingModel createEmbeddingModel(EmbeddingModelCreateParam param) {
-		return OpenAiCompatibleEmbeddingSupport.create(param, null);
+		return OpenAiCompatibleModelFactory.create(param, null);
 	}
 
 	@Override

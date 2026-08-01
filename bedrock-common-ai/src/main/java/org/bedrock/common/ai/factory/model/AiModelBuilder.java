@@ -25,7 +25,9 @@ public interface AiModelBuilder extends Ordered {
 	 * @param param 模型构建参数
 	 * @return ChatModel 聊天模型实例
 	 */
-	ChatModel createChatModel(ChatModelCreateParam param);
+	default ChatModel createChatModel(ChatModelCreateParam param) {
+		throw new UnsupportedOperationException("AI 平台[" + getAiPlatform() + "]暂不支持创建对话模型");
+	}
 
 	/**
 	 * 根据参数创建当前平台专属嵌入模型。

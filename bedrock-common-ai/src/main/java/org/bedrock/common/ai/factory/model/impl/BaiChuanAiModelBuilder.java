@@ -9,9 +9,6 @@ import org.bedrock.common.spi.autoservice.AutoService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.model.tool.ToolCallingManager;
-import org.springframework.ai.openai.OpenAiChatModel;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 
 /**
  * 百川智能 大模型构造器
@@ -21,16 +18,24 @@ import org.springframework.ai.openai.api.OpenAiApi;
 @AutoService(AiModelBuilder.class)
 public class BaiChuanAiModelBuilder implements AiModelBuilder {
 
-	/** 百川智能 OpenAI 协议默认接口地址 */
+	/**
+	 * 百川智能 OpenAI 协议默认接口地址
+	 */
 	public static final String BASE_URL = "https://api.baichuan-ai.com";
 
-	/** 对话补全接口路径 */
+	/**
+	 * 对话补全接口路径
+	 */
 	public static final String COMPLETE_PATH = "/v1/chat/completions";
 
-	/** 默认使用模型：Baichuan4-Turbo */
+	/**
+	 * 默认使用模型：Baichuan4-Turbo
+	 */
 	public static final String MODEL_DEFAULT = "Baichuan4-Turbo";
 
-	/** 工具调用管理器，用于函数调用能力处理 */
+	/**
+	 * 工具调用管理器，用于函数调用能力处理
+	 */
 	private final ToolCallingManager toolCallingManager;
 
 	/**
@@ -51,28 +56,12 @@ public class BaiChuanAiModelBuilder implements AiModelBuilder {
 	 */
 	@Override
 	public ChatModel createChatModel(ChatModelCreateParam param) {
-		OpenAiApi.Builder builder = OpenAiApi.builder()
-			.apiKey(param.key());
-		OpenAiCompatibleChatSupport.applyCompletionsPath(builder, param.path(), COMPLETE_PATH);
-		OpenAiCompatibleChatSupport.applyBaseUrl(builder, param.url(), BASE_URL);
-
-		// 模型默认参数配置
-		OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
-			.model(MODEL_DEFAULT)
-			.temperature(0.7)
-			.build();
-
-		return OpenAiChatModel
-			.builder()
-			.defaultOptions(openAiChatOptions)
-			.openAiApi(builder.build())
-			.toolCallingManager(toolCallingManager)
-			.build();
+		return OpenAiCompatibleModelFactory.createOpenAiChatModel(param, BASE_URL, COMPLETE_PATH, MODEL_DEFAULT, toolCallingManager);
 	}
 
 	@Override
 	public EmbeddingModel createEmbeddingModel(EmbeddingModelCreateParam param) {
-		return OpenAiCompatibleEmbeddingSupport.create(param, BASE_URL);
+		return OpenAiCompatibleModelFactory.create(param, BASE_URL);
 	}
 
 	/**

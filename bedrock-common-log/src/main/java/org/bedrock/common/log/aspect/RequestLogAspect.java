@@ -124,7 +124,7 @@ public class RequestLogAspect {
 
 	private void requestLog(HttpServletRequest request, ProceedingJoinPoint joinPoint, RequestLogConfig logAnnotation, String requestId, boolean isFileUpload) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\n🎯 ===================== 请求日志 =====================");
+		sb.append("\n🎯 ===================== 请求日志 START =====================");
 		sb.append("\n📦 请求ID: ").append(requestId);
 		sb.append("\n📍 请求信息:");
 		sb.append("\n   • 方法: ").append(request.getMethod());
@@ -177,7 +177,7 @@ public class RequestLogAspect {
 			}
 		}
 		sb.append("\n⏰ 请求时间: ").append(LocalDateTime.now().format(DateUtil.DATETIME_FORMATTER));
-		sb.append("\n🎯 ===================== 请求日志 =====================");
+		sb.append("\n🎯 ===================== 请求日志 END =====================");
 		logAnnotation.level().log(log, "REQUEST - {}", sb);
 	}
 
@@ -189,7 +189,7 @@ public class RequestLogAspect {
 								 long executionTime, boolean success, String errorMessage) {
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("\n✅ ===================== 响应日志 =====================");
+		sb.append("\n✅ ===================== 响应日志 START =====================");
 		sb.append("\n📦 请求ID: ").append(requestId);
 		sb.append("\n📍 请求信息:");
 		sb.append("\n   • 方法: ").append(request.getMethod());
@@ -215,7 +215,7 @@ public class RequestLogAspect {
 		sb.append("\n   • 方法: ").append(joinPoint.getSignature().getName());
 
 		sb.append("\n⏰ 响应时间: ").append(LocalDateTime.now().format(DateUtil.DATETIME_FORMATTER));
-		sb.append("\n✅ ===================== 响应日志 =====================");
+		sb.append("\n✅ ===================== 响应日志 END =====================");
 
 		logAnnotation.level().log(log, "RESPONSE - {}", sb.toString());
 	}

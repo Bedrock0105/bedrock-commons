@@ -9,12 +9,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.fasterxml.jackson.databind.type.MapType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public abstract class JsonUtil {
 
 	/**
@@ -36,6 +38,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().writeValueAsString(obj);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -47,6 +50,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().writeValueAsBytes(obj);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -58,6 +62,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(json, type);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -69,6 +74,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(bytes, type);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -80,6 +86,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(bytes, clazz);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -91,6 +98,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(json, clazz);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -102,6 +110,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(json, typeReference);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -113,6 +122,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(json, typeReference);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -124,6 +134,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(json, getCollectionType(clazz));
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -135,6 +146,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readValue(json, getCollectionType(clazz));
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -146,6 +158,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readTree(json);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -157,6 +170,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().readTree(json);
 		} catch (Exception e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}
@@ -217,6 +231,7 @@ public abstract class JsonUtil {
 		try {
 			return getInstance().treeToValue(node, valueType);
 		} catch (JsonProcessingException e) {
+			log.error("json 转换异常", e);
 			return null;
 		}
 	}

@@ -30,6 +30,7 @@
         <module>bedrock-common-excel</module>
         <module>bedrock-common-http</module>
         <module>bedrock-common-ai</module>
+        <module>bedrock-common-crypto</module>
     </modules>
 
     <properties>
@@ -281,6 +282,11 @@
             <dependency>
                 <groupId>org.bedrock</groupId>
                 <artifactId>bedrock-common-ai</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bedrock</groupId>
+                <artifactId>bedrock-common-crypto</artifactId>
                 <version>${revision}</version>
             </dependency>
             <!-- sm2 -->

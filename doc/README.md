@@ -26,6 +26,7 @@
 | 7 | bedrock-common-security | [安全模块 (Security)](./07-安全模块.md) | @PrePermissionCheck 权限校验 |
 | 8 | bedrock-common-log | [日志模块 (Log)](./08-日志模块.md) | @OperationLog 操作日志 |
 | 9 | bedrock-common-redis | [Redis 缓存](./09-Redis缓存.md) | RedisUtil、Spring Cache、Stream |
+| 10 | bedrock-common-crypto | [API 加解密 (Crypto)](./24-API加解密.md) | @ApiCrypto 请求解密 / 响应加密 |
 
 ---
 
@@ -33,14 +34,14 @@
 
 | # | 模块 | 文档 | 说明 |
 |---|------|------|------|
-| 10 | bedrock-common-excel | [Excel 处理](./10-Excel处理.md) | @RequestExcel / @ResponseExcel |
-| 11 | bedrock-common-http | [HTTP 客户端](./11-HTTP客户端.md) | @BedrockClient 声明式 HTTP |
-| 12 | bedrock-common-code | [事件总线 (EventBus)](./12-事件总线-EventBus.md) | 发布-订阅消息 |
-| 13 | bedrock-common-code | [树形结构 (TreeUtil)](./13-树形结构工具-TreeUtil.md) | 列表转树 |
-| 14 | bedrock-common-code | [通用工具类](./14-通用工具类.md) | R、工具类清单 |
-| 15 | bedrock-common-swagger | [Swagger 文档](./15-Swagger文档.md) | Knife4j + OpenAPI 3 |
-| 16 | bedrock-common-websocket | [WebSocket](./16-WebSocket.md) | WebSocket 自动配置 |
-| 17 | bedrock-common-resource | [资源管理 (Resource)](./17-资源管理.md) | OSS、邮件、短信 |
+| 11 | bedrock-common-excel | [Excel 处理](./10-Excel处理.md) | @RequestExcel / @ResponseExcel |
+| 12 | bedrock-common-http | [HTTP 客户端](./11-HTTP客户端.md) | @BedrockClient 声明式 HTTP |
+| 13 | bedrock-common-code | [事件总线 (EventBus)](./12-事件总线-EventBus.md) | 发布-订阅消息 |
+| 14 | bedrock-common-code | [树形结构 (TreeUtil)](./13-树形结构工具-TreeUtil.md) | 列表转树 |
+| 15 | bedrock-common-code | [通用工具类](./14-通用工具类.md) | R、工具类清单 |
+| 16 | bedrock-common-swagger | [Swagger 文档](./15-Swagger文档.md) | Knife4j + OpenAPI 3 |
+| 17 | bedrock-common-websocket | [WebSocket](./16-WebSocket.md) | WebSocket 自动配置 |
+| 18 | bedrock-common-resource | [资源管理 (Resource)](./17-资源管理.md) | OSS、邮件、短信 |
 
 ---
 
@@ -48,12 +49,12 @@
 
 | # | 模块 | 文档 | 说明 |
 |---|------|------|------|
-| 18 | bedrock-common-spi | [SPI 扩展](./18-SPI扩展.md) | @AutoService、自动配置注册 |
-| 19 | bedrock-common-cloud | [微服务云模块 (Cloud)](./19-微服务云模块.md) | @BedrockCloudApplication、Feign |
-| 20 | bedrock-common-test | [测试模块 (Test)](./20-测试模块.md) | @BedrockTest |
-| 21 | — | [编码规范](./21-编码规范.md) | 代码规范 |
-| 22 | — | [常见问题 FAQ](./22-常见问题FAQ.md) | 问题排查 |
-| 23 | bedrock-common-ai | [AI 公共模块](./23-AI公共模块.md) | Spring AI 工厂、Advisor、工具与 MCP |
+| 19 | bedrock-common-spi | [SPI 扩展](./18-SPI扩展.md) | @AutoService、自动配置注册 |
+| 20 | bedrock-common-cloud | [微服务云模块 (Cloud)](./19-微服务云模块.md) | @BedrockCloudApplication、Feign |
+| 21 | bedrock-common-test | [测试模块 (Test)](./20-测试模块.md) | @BedrockTest |
+| 22 | — | [编码规范](./21-编码规范.md) | 代码规范 |
+| 23 | — | [常见问题 FAQ](./22-常见问题FAQ.md) | 问题排查 |
+| 24 | bedrock-common-ai | [AI 公共模块](./23-AI公共模块.md) | Spring AI 工厂、Advisor、工具与 MCP |
 
 ---
 
@@ -88,6 +89,7 @@ bedrock-ui/          ← 前端项目
 
 | 日期 | 版本 | 说明 |
 |------|------|------|
+| 2026-07-31 | 2.2.0 | 新增 bedrock-common-crypto API 加解密模块说明 |
 | 2026-07-19 | 2.1.0 | 新增 bedrock-common-ai 模块说明 |
 | 2026-07-06 | 2.0.0 | 基于源码和 bedrock-cloud 实际用法全面重写 |
 | 2026-06-14 | 1.0.0 | 初始版本 |

@@ -9,9 +9,6 @@ import org.bedrock.common.spi.autoservice.AutoService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.model.tool.ToolCallingManager;
-import org.springframework.ai.openai.OpenAiChatModel;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 
 /**
  * cohere 大模型构造器
@@ -59,28 +56,12 @@ public class CohereAiModelBuilder implements AiModelBuilder {
 	 */
 	@Override
 	public ChatModel createChatModel(ChatModelCreateParam param) {
-		OpenAiApi.Builder builder = OpenAiApi.builder()
-			.apiKey(param.key());
-		OpenAiCompatibleChatSupport.applyCompletionsPath(builder, param.path(), COMPLETE_PATH);
-		OpenAiCompatibleChatSupport.applyBaseUrl(builder, param.url(), BASE_URL);
-
-		// 模型默认参数配置
-		OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
-			.model(MODEL_DEFAULT)
-			.temperature(0.7)
-			.build();
-
-		return OpenAiChatModel
-			.builder()
-			.defaultOptions(openAiChatOptions)
-			.openAiApi(builder.build())
-			.toolCallingManager(toolCallingManager)
-			.build();
+		return OpenAiCompatibleModelFactory.createOpenAiChatModel(param, BASE_URL, COMPLETE_PATH, MODEL_DEFAULT, toolCallingManager);
 	}
 
 	@Override
 	public EmbeddingModel createEmbeddingModel(EmbeddingModelCreateParam param) {
-		return OpenAiCompatibleEmbeddingSupport.create(param, BASE_URL);
+		return OpenAiCompatibleModelFactory.create(param, BASE_URL);
 	}
 
 	/**

@@ -5,10 +5,12 @@ import org.bedrock.common.security.interceptor.SecurityInterceptor;
 import org.bedrock.common.security.props.SecurityProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @AutoConfiguration
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnProperty(prefix = SecurityProperties.PREFIX, name = "enabled", havingValue = "true")
 @RequiredArgsConstructor
 public class SecurityWebMvcConfigurer implements WebMvcConfigurer {

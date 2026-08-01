@@ -15,9 +15,6 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.model.tool.ToolCallingManager;
-import org.springframework.ai.openai.OpenAiChatModel;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 
 /**
  * 硅基流动模型构建器。
@@ -35,14 +32,25 @@ import org.springframework.ai.openai.api.OpenAiApi;
 @AutoService(AiModelBuilder.class)
 public class SiliconFlowAiModelBuilder implements AiModelBuilder {
 
-	/** 硅基流动 OpenAI 协议默认接口地址 */
+	/**
+	 * 硅基流动 OpenAI 协议默认接口地址
+	 */
 	public static final String BASE_URL = "https://api.siliconflow.cn";
 
-	/** 对话补全接口路径 */
+	/**
+	 * 对话补全接口路径
+	 */
 	public static final String COMPLETE_PATH = "/v1/chat/completions";
 
-	/** 默认使用模型：Qwen/Qwen2.5-72B-Instruct */
+	/**
+	 * 默认使用模型：Qwen/Qwen2.5-72B-Instruct
+	 */
 	public static final String MODEL_DEFAULT = "Qwen/Qwen2.5-72B-Instruct";
+
+	/**
+	 * 图片生成接口路径
+	 */
+	static final String IMAGES_PATH = "v1/images/generations";
 
 	private final ToolCallingManager toolCallingManager;
 
@@ -52,42 +60,27 @@ public class SiliconFlowAiModelBuilder implements AiModelBuilder {
 
 	@Override
 	public ChatModel createChatModel(ChatModelCreateParam param) {
-		OpenAiApi.Builder builder = OpenAiApi.builder()
-			.apiKey(param.key());
-		OpenAiCompatibleChatSupport.applyCompletionsPath(builder, param.path(), COMPLETE_PATH);
-		OpenAiCompatibleChatSupport.applyBaseUrl(builder, param.url(), BASE_URL);
-
-		OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
-			.model(MODEL_DEFAULT)
-			.temperature(0.7)
-			.build();
-
-		return OpenAiChatModel
-			.builder()
-			.defaultOptions(openAiChatOptions)
-			.openAiApi(builder.build())
-			.toolCallingManager(toolCallingManager)
-			.build();
+		return OpenAiCompatibleModelFactory.createOpenAiChatModel(param, BASE_URL, COMPLETE_PATH, MODEL_DEFAULT, toolCallingManager);
 	}
 
 	@Override
 	public EmbeddingModel createEmbeddingModel(EmbeddingModelCreateParam param) {
-		return OpenAiCompatibleEmbeddingSupport.create(param, BASE_URL);
+		return OpenAiCompatibleModelFactory.create(param, BASE_URL);
 	}
 
 	@Override
 	public ImageModel createImageModel(ImageModelCreateParam param) {
-		return OpenAiCompatibleMediaSupport.createImageModel(param.url(), param.key(), BASE_URL, OpenAiCompatibleMediaSupport.DEFAULT_IMAGES_PATH, param.path());
+		return OpenAiCompatibleModelFactory.createImageModel(param, BASE_URL, IMAGES_PATH);
 	}
 
 	@Override
 	public TextToSpeechModel createTextToSpeechModel(TextToSpeechModelCreateParam param) {
-		return OpenAiCompatibleMediaSupport.createTextToSpeechModel(param.url(), param.key(), BASE_URL);
+		return OpenAiCompatibleModelFactory.createTextToSpeechModel(param, BASE_URL);
 	}
 
 	@Override
 	public TranscriptionModel createTranscriptionModel(TranscriptionModelCreateParam param) {
-		return OpenAiCompatibleMediaSupport.createTranscriptionModel(param.url(), param.key(), BASE_URL);
+		return OpenAiCompatibleModelFactory.createTranscriptionModel(param, BASE_URL);
 	}
 
 	@Override

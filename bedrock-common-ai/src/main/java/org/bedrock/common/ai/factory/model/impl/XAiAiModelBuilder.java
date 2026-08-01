@@ -9,9 +9,6 @@ import org.bedrock.common.spi.autoservice.AutoService;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.model.tool.ToolCallingManager;
-import org.springframework.ai.openai.OpenAiChatModel;
-import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.ai.openai.api.OpenAiApi;
 
 /**
  * xAI Grok 模型构建器。
@@ -27,17 +24,30 @@ import org.springframework.ai.openai.api.OpenAiApi;
 @AutoService(AiModelBuilder.class)
 public class XAiAiModelBuilder implements AiModelBuilder {
 
-	/** xAI OpenAI 协议默认接口地址 */
+	/**
+	 * xAI OpenAI 协议默认接口地址
+	 */
 	public static final String BASE_URL = "https://api.x.ai";
 
-	/** 对话补全接口路径 */
+	/**
+	 * 对话补全接口路径
+	 */
 	public static final String COMPLETE_PATH = "/v1/chat/completions";
 
-	/** 默认使用模型：grok-build-0.1 */
+	/**
+	 * 默认使用模型：grok-build-0.1
+	 */
 	public static final String MODEL_DEFAULT = "grok-build-0.1";
 
-	/** 工具调用管理器，用于函数调用能力处理 */
+	/**
+	 * 工具调用管理器，用于函数调用能力处理
+	 */
 	private final ToolCallingManager toolCallingManager;
+
+	/**
+	 * 图片生成接口路径
+	 */
+	static final String IMAGES_PATH = "v1/images/generations";
 
 	/**
 	 * 无参构造，从Spring容器获取 ToolCallingManager 单例
@@ -57,27 +67,12 @@ public class XAiAiModelBuilder implements AiModelBuilder {
 	 */
 	@Override
 	public ChatModel createChatModel(ChatModelCreateParam param) {
-		OpenAiApi.Builder builder = OpenAiApi.builder()
-			.apiKey(param.key());
-		OpenAiCompatibleChatSupport.applyCompletionsPath(builder, param.path(), COMPLETE_PATH);
-		OpenAiCompatibleChatSupport.applyBaseUrl(builder, param.url(), BASE_URL);
-
-		OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
-			.model(MODEL_DEFAULT)
-			.temperature(0.7)
-			.build();
-
-		return OpenAiChatModel
-			.builder()
-			.defaultOptions(openAiChatOptions)
-			.openAiApi(builder.build())
-			.toolCallingManager(toolCallingManager)
-			.build();
+		return OpenAiCompatibleModelFactory.createOpenAiChatModel(param, BASE_URL, COMPLETE_PATH, MODEL_DEFAULT, toolCallingManager);
 	}
 
 	@Override
 	public ImageModel createImageModel(ImageModelCreateParam param) {
-		return OpenAiCompatibleMediaSupport.createImageModel(param.url(), param.key(), BASE_URL, OpenAiCompatibleMediaSupport.DEFAULT_IMAGES_PATH, param.path());
+		return OpenAiCompatibleModelFactory.createImageModel(param, BASE_URL, IMAGES_PATH);
 	}
 
 	@Override
