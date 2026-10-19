@@ -12,13 +12,25 @@ import java.util.*;
 
 import static org.bedrock.common.code.constant.EnvConstant.DEV_CODE;
 
+/**
+ * 应用启动入口，统一注入应用名、激活环境以及 Nacos 共享配置。
+ */
 public final class BedrockApplication {
 
-	public static ApplicationContext run(String applicationName, Class<?> primarySource, String... args) {
-		return createSpringApplicationBuilder(applicationName, primarySource, args).run(args);
+	private BedrockApplication() {
 	}
 
-	public static SpringApplicationBuilder createSpringApplicationBuilder(String applicationName, Class<?> source, String... args) {
+	/**
+	 * 按应用名和主配置类启动 Spring 应用。
+	 */
+	public static ApplicationContext run(String applicationName, Class<?> primarySource, String... args) {
+		return createBuilder(applicationName, primarySource, args).run(args);
+	}
+
+	/**
+	 * 创建已注入公共启动配置的 {@link SpringApplicationBuilder}。
+	 */
+	public static SpringApplicationBuilder createBuilder(String applicationName, Class<?> source, String... args) {
 		ServerInfo.setStartTime(System.currentTimeMillis());
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(source);
 		Properties props = System.getProperties();
@@ -35,6 +47,9 @@ public final class BedrockApplication {
 		return builder;
 	}
 
+	/**
+	 * 按环境和应用名组装 Nacos 共享配置与配置导入项。
+	 */
 	private static Properties getProperties(String profile, String applicationName) {
 		Properties properties = new Properties();
 		properties.setProperty("spring.main.allow-bean-definition-overriding", "true");
@@ -47,25 +62,15 @@ public final class BedrockApplication {
 		return properties;
 	}
 
+	/**
+	 * 解析激活环境。优先读取命令行、系统属性和环境变量中的 {@code spring.profiles.active}，都没有时返回开发环境。
+	 */
 	public static String getProfile(String... args) {
-		// 创建标准环境对象
 		StandardEnvironment environment = new StandardEnvironment();
-		// 添加命令行参数源（优先级最高）
-		SimpleCommandLinePropertySource commandLineSource = new SimpleCommandLinePropertySource(args);
-		environment.getPropertySources().addFirst(commandLineSource);
-		// 1. 从命令行参数获取
+		environment.getPropertySources().addFirst(new SimpleCommandLinePropertySource(args));
 		String activeProfiles = environment.getProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME);
-		// 2. 从环境变量获取
-		if (activeProfiles == null) {
-			activeProfiles = System.getenv(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME.toUpperCase());
-		}
-		// 3. 从系统属性获取
-		if (activeProfiles == null) {
-			activeProfiles = System.getProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME);
-		}
-		// 4. 使用默认环境
-		if (activeProfiles == null || activeProfiles.trim().isEmpty()) {
-			activeProfiles = DEV_CODE;
+		if (activeProfiles == null || activeProfiles.isBlank()) {
+			return DEV_CODE;
 		}
 		return activeProfiles;
 	}
